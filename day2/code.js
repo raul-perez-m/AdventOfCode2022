@@ -22,7 +22,7 @@ function calculate(){
         })
     });
 
-    const total =array.reduce((p, c) => p += c.figure + c.state , 0 );
+    const total = array.reduce((p, c) => p += c.figure + c.state , 0 );
     console.log(total);
     const array2 = []
     input.split('\n').forEach((x) => {
