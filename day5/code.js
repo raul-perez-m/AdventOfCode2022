@@ -15,6 +15,8 @@ const crates = {
     9: []
 }
 
+let crates2 = {}
+
 function moveCrate(k, from, to){
     for(let i = 0; i < k; i +=1)
     {
@@ -24,8 +26,8 @@ function moveCrate(k, from, to){
 }
 
 function moveCrateMultiple(k, from, to){
-    const moving = crates[from].splice(0, k);
-    crates[to].unshift(...moving);
+    const moving = crates2[from].splice(0, k);
+    crates2[to].unshift(...moving);
     
 }
 
@@ -54,14 +56,17 @@ function calculate(){
     lines.forEach((l) => {
         l.forEach((x,idx) => x !== '[]' ? crates[idx + 1].push(x) : '')
     })
+    crates2 = structuredClone(crates);
     data.filter(x => x).forEach(line => {
         const move = line.split(' ').filter(Number).map(Number);
         moveCrateMultiple(move[0], move[1], move[2])
-        //moveCrate(move[0], move[1], move[2])
+        moveCrate(move[0], move[1], move[2])
     });
 
     const output = Object.values(crates).reduce((p,c) => p += c[0], '')
+    const output2 = Object.values(crates2).reduce((p,c) => p += c[0], '')
     console.log(output)
+    console.log(output2)
  
 }
 
