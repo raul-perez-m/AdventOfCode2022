@@ -1,8 +1,7 @@
 const { readFileSync } = require('fs');
 const  path = require('path')
 
-const input = readFileSync(path.join(__dirname, 'input.txt'), 'utf-8').split('\n').map(x => 
-    x.split(' '));
+const input = readFileSync(path.join(__dirname, 'input.txt'), 'utf-8').split('\n').map(x => x.split(' '));
 
 const directory ={
     '/': {}
@@ -34,21 +33,6 @@ function executeCommand(command){
 
 let response = [];
 
-// function calculateSize(dir, space) {
-//     let size = 0;
-//     Object.values(dir).forEach( x => {
-//         if(typeof x == 'object'){
-//             size += calculateSize(x, space);
-//         }else {
-//              size += x;
-//         }
-//     });
-//     if(size && size < space)
-//         response.push(size);
-//     return size;
-// }
-
-
 function calculateSize(dir, operation) {
     let size = 0;
     Object.values(dir).forEach( x => {
@@ -61,7 +45,6 @@ function calculateSize(dir, operation) {
 
 function calculate(){
     input.forEach(x => {
-
         if(x[0] == '$') {
             executeCommand(x)
         }else if(x[0] == 'dir'){
