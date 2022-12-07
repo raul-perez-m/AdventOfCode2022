@@ -4,6 +4,7 @@ const  path = require('path')
 const input = readFileSync(path.join(__dirname, 'input.txt'), 'utf-8');
 
 function checkString(str) {
+    // set size returns the size with the non repeated characters
     return new Set(str).size == str.length;
 }
 
